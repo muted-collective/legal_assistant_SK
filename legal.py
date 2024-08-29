@@ -48,12 +48,12 @@ def find_thread():
     return response
 
 
-openai.api_key= os.getenv('openai_api_key')
+openai.api_key= os.getenv('OPENAI_API_KEY')
 client= openai.OpenAI(api_key=openai.api_key)
 model= "gpt-4o"
-assis_id= os.getenv('assistant_id')
+assis_id= os.getenv('ASSISTANT_ID')
 thread_id= find_thread()
-vector_id= os.getenv('vector_store_id')
+vector_id= os.getenv('VECTOR_STORE_ID')
 
 # vector= client.beta.vector_stores.create()
 
@@ -78,8 +78,8 @@ def send_email(To, CC, BCC, Subject, Body):
     email_to_subject= Subject
     email_to_body= f""" {Body} """
 
-    email_sender= os.getenv('email_sender')
-    email_password= os.getenv('gmail_password')
+    email_sender= os.getenv('EMAIL_SENDER')
+    email_password= os.getenv('GMAIL_PASSWORD')
 
     if not email_password:
         raise ValueError('GMAIL_PASSWORD environment variable not set')
