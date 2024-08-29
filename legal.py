@@ -55,6 +55,10 @@ assis_id= os.getenv('ASSISTANT_ID')
 thread_id= find_thread()
 vector_id= os.getenv('VECTOR_STORE_ID')
 
+print(f'{openai.api_key}')
+print(f'{vector_id}')
+print(f'{assis_id}')
+
 # vector= client.beta.vector_stores.create()
 
 
