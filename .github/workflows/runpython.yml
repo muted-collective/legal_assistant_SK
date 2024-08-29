@@ -26,5 +26,5 @@ jobs:
 
     - name: Run Python Script
       run: |
-        pip install requests
+        pip install -r requirements.txt
         python legal.py
