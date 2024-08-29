@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
 
 env:
-  assistant_id: ${{secrets.ASSISTANT_ID}}
-  email_sender: ${{secrets.EMAIL_SENDER}}
-  gmail_password: ${{secrets.GMAIL_PASSWORD}}
-  openai_api_key: ${{secrets.OPENAI_API_KEY}}
-  vector_store_id: ${{secrets.VECTOR_STORE_ID}}
+  ASSISTANT_ID: ${{secrets.ASSISTANT_ID}}
+  EMAIL_SENDER: ${{secrets.EMAIL_SENDER}}
+  GMAIL_PASSWORD: ${{secrets.GMAIL_PASSWORD}}
+  OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+  VECTOR_STORE_ID: ${{secrets.VECTOR_STORE_ID}}
 
   
 
@@ -19,6 +19,9 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    - name: Debug Environment Variables
+      run: printenv | grep 'ASSISTANT_ID\|OPENAI_API_KEY\|VECTOR_STORE_ID'
+      
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
