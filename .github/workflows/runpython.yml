@@ -10,8 +10,6 @@ env:
   OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
   VECTOR_STORE_ID: ${{secrets.VECTOR_STORE_ID}}
 
-  
-
 jobs:
   run-python:
     runs-on: ubuntu-latest
@@ -19,15 +17,12 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Debug Environment Variables
-      run: printenv | grep 'ASSISTANT_ID\|OPENAI_API_KEY\|VECTOR_STORE_ID'
-      
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.12.3'
 
-    - name: Run Python Script
+    - name: Run Streamlit App
       run: |
         pip install -r requirements.txt
-        python legal.py
+        streamlit run legal.py
