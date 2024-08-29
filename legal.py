@@ -53,7 +53,7 @@ client= openai.OpenAI(api_key=openai.api_key)
 model= "gpt-4o"
 assis_id= os.getenv('assistant_id')
 thread_id= find_thread()
-vector_id= os.getenv('VECTOR_STORE_ID')
+vector_id= os.getenv('vector_store_id')
 
 # vector= client.beta.vector_stores.create()
 
