@@ -29,16 +29,19 @@ EMAIL_SENDER= st.secrets['EMAIL_SENDER']
 GMAIL_PASSWORD= st.secrets['GMAIL_PASSWORD']
 
 
-encrypted_secrets= { 
+encrypted_secrets= {
     'OPENAI_API_KEY': OPENAI_API_KEY,
     'VECTOR_STORE_ID': VECTOR_STORE_ID,
     'ASSISTANT_ID': ASSISTANT_ID,
     'EMAIL_SENDER': EMAIL_SENDER,
-    'GMAIL_PASSWORD': {GMAIL_PASSWORD}
+    'GMAIL_PASSWORD': GMAIL_PASSWORD
     }
 
 
-decrypted_secrets = {key: cipher_suite.decrypt(value.encode()).decode() for key, value in encrypted_secrets.items()}
+decrypted_secrets = {}
+for key, value in encrypted_secrets.items():
+    print(f"Decrypting {key}: {value}")
+    decrypted_secrets[key] = cipher_suite.decrypt(value.encode()).decode()
 
 
 # New Thread
