@@ -11,9 +11,34 @@ import smtplib, ssl
 from typing_extensions import override
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from cryptography.fernet import Fernet
 from email.mime.application import MIMEApplication
 from email.utils import formataddr
 load_dotenv()
+
+# Keys
+
+encryption_key = os.getenv('ENCRYPTION_KEY')
+cipher_suite = Fernet(encryption_key.encode())
+
+
+OPENAI_API_KEY= st.secrets('OPENAI_API_KEY')
+VECTOR_STORE_ID= st.secrets('VECTOR_STORE_ID')
+ASSISTANT_ID= st.secrets('ASSISTANT_ID')
+EMAIL_SENDER= st.secrets('EMAIL_SENDER')
+GMAIL_PASSWORD= st.secrets('GMAIL_PASSWORD')
+
+
+encrypted_secrets= { 
+    'OPENAI_API_KEY': OPENAI_API_KEY,
+    'VECTOR_STORE_ID': VECTOR_STORE_ID,
+    'ASSISTANT_ID': ASSISTANT_ID,
+    'EMAIL_SENDER': EMAIL_SENDER,
+    'GMAIL_PASSWORD': {GMAIL_PASSWORD}
+    }
+
+
+decrypted_secrets = {key: cipher_suite.decrypt(value.encode()).decode() for key, value in encrypted_secrets.items()}
 
 
 # New Thread
@@ -48,19 +73,16 @@ def find_thread():
     return response
 
 
-openai.api_key= os.getenv('OPENAI_API_KEY')
+openai.api_key= decrypted_secrets['OPENAI_API_KEY']
 client= openai.OpenAI(api_key=openai.api_key)
 model= "gpt-4o"
-assis_id= os.getenv('ASSISTANT_ID')
+assis_id= decrypted_secrets['ASSISTANT_ID']
 thread_id= find_thread()
-vector_id= os.getenv('VECTOR_STORE_ID')
+vector_id= decrypted_secrets['VECTOR_STORE_ID']
 
-print(f'{openai.api_key}')
-print(type(openai.api_key))
-print(f'{vector_id}')
-print(type(vector_id))
-print(f'{assis_id}')
-print(type(assis_id))
+print(vector_id)
+print(assis_id)
+
 
 # vector= client.beta.vector_stores.create()
 
@@ -85,8 +107,8 @@ def send_email(To, CC, BCC, Subject, Body):
     email_to_subject= Subject
     email_to_body= f""" {Body} """
 
-    email_sender= os.getenv('EMAIL_SENDER')
-    email_password= os.getenv('GMAIL_PASSWORD')
+    email_sender= decrypted_secrets['EMAIL_SENDER']
+    email_password= decrypted_secrets['GMAIL_PASSWORD']
 
     if not email_password:
         raise ValueError('GMAIL_PASSWORD environment variable not set')

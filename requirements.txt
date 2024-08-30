@@ -3,3 +3,4 @@ python-dotenv
 streamlit
 streamlit_authenticator
 reportlab
+cryptography
