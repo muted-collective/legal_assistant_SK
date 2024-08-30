@@ -18,7 +18,7 @@ load_dotenv()
 
 # Keys
 
-encryption_key = os.getenv('ENCRYPTION_KEY')
+encryption_key = st.secrets('ENCRYPTION_KEY')
 cipher_suite = Fernet(encryption_key.encode())
 
 
