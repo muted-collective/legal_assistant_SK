@@ -18,15 +18,15 @@ load_dotenv()
 
 # Keys
 
-encryption_key = st.secrets('ENCRYPTION_KEY')
+encryption_key = st.secrets['ENCRYPTION_KEY']
 cipher_suite = Fernet(encryption_key.encode())
 
 
-OPENAI_API_KEY= st.secrets('OPENAI_API_KEY')
-VECTOR_STORE_ID= st.secrets('VECTOR_STORE_ID')
-ASSISTANT_ID= st.secrets('ASSISTANT_ID')
-EMAIL_SENDER= st.secrets('EMAIL_SENDER')
-GMAIL_PASSWORD= st.secrets('GMAIL_PASSWORD')
+OPENAI_API_KEY= st.secrets['OPENAI_API_KEY']
+VECTOR_STORE_ID= st.secrets['VECTOR_STORE_ID']
+ASSISTANT_ID= st.secrets['ASSISTANT_ID']
+EMAIL_SENDER= st.secrets['EMAIL_SENDER']
+GMAIL_PASSWORD= st.secrets['GMAIL_PASSWORD']
 
 
 encrypted_secrets= { 
