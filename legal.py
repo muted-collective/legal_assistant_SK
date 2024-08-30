@@ -529,7 +529,7 @@ if st.sidebar.button("Upload File"):
 
 # Check sessions
 
-st.write(thread_id)
+# st.write(thread_id)
 
 # Show existing messages if any
 
