@@ -182,6 +182,10 @@ def download_file(file_data):
     # Display Content
     st.sidebar.code(file_data, language='html')
 
+    response= "File made available for export in the sidebar. Please click the copy putton to access your data"
+    
+    return response
+
 
 list_tools= [{
             "type": "function",
@@ -252,11 +256,10 @@ class EventHandler(AssistantEventHandler):
             
             # while True:
             #     time.sleep(1)
-            
-            elif tool.function.name == "export_file":
+
+            elif tool.function.name == "download_file":
                 file_data= download_file(**params)
-                tool_outputs.append({"tool_call_id": tool.id, "output": f'File made available for export in the sidebar. Please click the copy putton to access your data'})
-                download_file(file_data)
+                tool_outputs.append({"tool_call_id": tool.id, "output": f'{file_data}'})
 
             elif tool.function.name == "send_email":
                 send_email_output= send_email(**params)
