@@ -21,6 +21,7 @@ load_dotenv()
 encryption_key = st.secrets['ENCRYPTION_KEY']
 cipher_suite = Fernet(encryption_key.encode())
 
+print(encryption_key)
 
 OPENAI_API_KEY= st.secrets['OPENAI_API_KEY']
 VECTOR_STORE_ID= st.secrets['VECTOR_STORE_ID']
@@ -75,6 +76,7 @@ def find_thread():
 
     return response
 
+print(decrypted_secrets['OPENAI_API_KEY'])
 
 openai.api_key= decrypted_secrets['OPENAI_API_KEY']
 client= openai.OpenAI(api_key=openai.api_key)
