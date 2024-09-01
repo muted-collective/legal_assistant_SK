@@ -76,13 +76,13 @@ def find_thread():
     return response
 
 
+print(OPENAI_API_KEY)
 openai.api_key= OPENAI_API_KEY
 client= openai.OpenAI(api_key=openai.api_key)
 model= "gpt-4o-mini"
 assis_id= ASSISTANT_ID
 thread_id= find_thread()
 vector_id= VECTOR_STORE_ID
-
 
 
 # Functions
