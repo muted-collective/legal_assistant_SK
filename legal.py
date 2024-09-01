@@ -16,6 +16,7 @@ from email.mime.application import MIMEApplication
 from email.utils import formataddr
 load_dotenv()
 
+
 # Keys
 
 encryption_key = st.secrets['ENCRYPTION_KEY']
@@ -183,7 +184,7 @@ def download_file(file_data):
     st.sidebar.code(file_data, language='html')
 
     response= "File made available for export in the sidebar. Please click the copy putton to access your data"
-    
+
     return response
 
 
