@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\legal_api - SK\myvenv-sk
+set VIRTUAL_ENV=C:\Users\dkdra\Desktop\Nappy Labs\Projects\legal_api - SK\myvenv-sk
 
 if not defined PROMPT set PROMPT=$P$G
 
