@@ -207,7 +207,6 @@ def generate_thread_name(messages):
     )
 
     summary = response.choices[0].message.content
-    print(summary)
     return summary if summary else "Untitled"
 
 
