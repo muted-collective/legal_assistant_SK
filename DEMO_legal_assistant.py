@@ -58,13 +58,12 @@ try:
     # Decode the Base64 string
     decoded_key = base64.b64decode(SERVICE_ACCOUNT).decode('utf-8')
 
+    print(decoded_key)
+    print(type(decoded_key))
+
     # Parse the JSON string into a dictionary
     service_account_info = json.loads(decoded_key)
-
-    print(service_account_info)
-    print(type(service_account_info))
-    
-    
+        
 except Exception as e:
     raise ValueError(f"Failed to load service account key: {e}")
 
