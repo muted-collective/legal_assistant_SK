@@ -14,7 +14,6 @@ import base64
 from firebase_admin import credentials, firestore
 
 
-
 load_dotenv()
 
 # Hidden Keys

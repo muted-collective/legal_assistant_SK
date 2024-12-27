@@ -1,4 +1,4 @@
 .env
 thread_id.txt
 agent_keys.py
-sk-agent-firebase.json
+sk_agent_firebase.json
