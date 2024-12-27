@@ -50,6 +50,7 @@ ASSISTANT_ID= decrypted_secrets['ASSISTANT_ID']
 SERVICE_ACCOUNT= decrypted_secrets['SERVICE_ACCOUNT']
 
 
+
 if not SERVICE_ACCOUNT:
     raise ValueError("Base64-encoded service account key not found in environment variables.")
 
@@ -57,9 +58,11 @@ try:
     # Decode the Base64 string
     decoded_key = base64.b64decode(SERVICE_ACCOUNT).decode('utf-8')
 
-
     # Parse the JSON string into a dictionary
     service_account_info = json.loads(decoded_key)
+
+    print(service_account_info)
+    print(type(service_account_info))
     
     
 except Exception as e:
